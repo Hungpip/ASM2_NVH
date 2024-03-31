@@ -29,7 +29,12 @@ namespace ASM2_NVH {
 		private void Form1_Load(object sender, EventArgs e) {
 		}
 
+		// Them dialog xac nhan thoot
 		private void button2_Click(object sender, EventArgs e) {
+			DialogResult result = MessageBox.Show("Do you want to exit?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+			if (result == DialogResult.OK) {
+				Application.Exit();
+			}
 		}
 	}
 }
