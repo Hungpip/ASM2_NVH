@@ -9,10 +9,13 @@ namespace ASM2_NVH {
 		private string Email = "thanhtoandiennuoc";
 		private string password = "123456";
 
+		// Them close Form1 khi dang nhap thanh cong
 		private void button1_Click(object sender, EventArgs e) {
 			if (KiemTraDangNhap(textBox1.Text, textBox2.Text)) {
 				Form2 f = new();
+				Hide();
 				f.ShowDialog();
+				Close();
 			} else {
 				MessageBox.Show("Please retun login", "Waring", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
@@ -22,7 +25,6 @@ namespace ASM2_NVH {
 			if (Email == this.Email && password == this.password) {
 				return true;
 			}
-
 			return false;
 		}
 
