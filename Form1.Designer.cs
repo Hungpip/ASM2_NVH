@@ -34,7 +34,6 @@
             textBox2 = new TextBox();
             label1 = new Label();
             label2 = new Label();
-            checkBox1 = new CheckBox();
             SuspendLayout();
             // 
             // button1
@@ -74,6 +73,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(203, 23);
             textBox2.TabIndex = 3;
+            textBox2.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -96,23 +96,11 @@
             label2.Text = "Password";
             label2.Click += Form1_Load;
             // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            checkBox1.Location = new Point(348, 236);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(107, 23);
-            checkBox1.TabIndex = 6;
-            checkBox1.Text = "I'm not robot\r\n";
-            checkBox1.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(797, 386);
-            Controls.Add(checkBox1);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(textBox2);
@@ -134,6 +122,5 @@
         private TextBox textBox2;
         private Label label1;
         private Label label2;
-        private CheckBox checkBox1;
     }
 }

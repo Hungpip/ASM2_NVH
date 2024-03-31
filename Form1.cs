@@ -10,7 +10,8 @@ namespace ASM2_NVH {
 		private string password = "123456";
 
 		// Them close Form1 khi dang nhap thanh cong
-		private void button1_Click(object sender, EventArgs e) {
+		private void button1_Click(object sender, EventArgs e)
+		{
 			if (KiemTraDangNhap(textBox1.Text, textBox2.Text)) {
 				Form2 f = new();
 				Hide();
