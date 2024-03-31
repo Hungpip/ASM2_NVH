@@ -1,8 +1,8 @@
 namespace ASM2_NVH {
 
-	public partial class Form1 : Form {
+	public partial class LoginForm : Form {
 
-		public Form1() {
+		public LoginForm() {
 			InitializeComponent();
 		}
 
@@ -10,10 +10,9 @@ namespace ASM2_NVH {
 		private string password = "123456";
 
 		// Them close Form1 khi dang nhap thanh cong
-		private void button1_Click(object sender, EventArgs e)
-		{
-			if (KiemTraDangNhap(textBox1.Text, textBox2.Text)) {
-				Form2 f = new();
+		private void button1_Click(object sender, EventArgs e) {
+			if (KiemTraDangNhap(txbEmail.Text, passwordEmail.Text)) {
+				WaterCalculatorForm f = new();
 				Hide();
 				f.ShowDialog();
 				Close();
