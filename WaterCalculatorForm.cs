@@ -64,25 +64,50 @@
 			if (!int.TryParse(thismonth, out int thisMonthValue)) {
 				return;
 			}
+
 			int TotalWaternumber = thisMonthValue - lastMonthValue;
 
+			//Type Customer and price
 			string type = cbbType.Text;
+			double price = 0;
+
 			if (string.IsNullOrEmpty(type)) {
 				MessageBox.Show("Please choose type customer", "Notice",
 				MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
-			} else {
-				// thêm xử lí theo loại ở đây
-				// 4 Loại là "Household", "Public services", "Production units", "Business"
-			}
+			} 
+			else 
+			{
+				switch(type)
+				{
 
-			ListViewItem item = new
-();
+					case "Household":
+						
+					break;
+					
+					case "Public service":
+						price = TotalWaternumber * 9.955;
+                    break;
+
+					case "Production units":
+						price = TotalWaternumber * 11.615;
+					break;
+
+					case "Business services":
+						price = TotalWaternumber * 22.068;
+					break;
+                }
+            }
+
+			
+
+
+            ListViewItem item = new();
 			item.Text = name;
 
 			item.SubItems.Add(type);
 			item.SubItems.Add("" + TotalWaternumber);
-			item.SubItems.Add(thismonth);
+			item.SubItems.Add("" + price);
 
 			listView1.Items.Add(item);
 			cbbType.Text = type;
@@ -96,7 +121,8 @@
 			cbbType.Text = "";
 		}
 
-		private void textBox3_KeyPress(object sender, KeyPressEventArgs e) {
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e) {
 			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
 				e.Handled = true;
 			}
