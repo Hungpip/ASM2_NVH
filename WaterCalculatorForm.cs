@@ -75,34 +75,27 @@
 				MessageBox.Show("Please choose type customer", "Notice",
 				MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
-			} 
-			else 
-			{
-				switch(type)
-				{
-
+			} else {
+				switch (type) {
 					case "Household":
-						
-					break;
-					
+
+						break;
+
 					case "Public service":
 						price = TotalWaternumber * 9.955;
-                    break;
+						break;
 
 					case "Production units":
 						price = TotalWaternumber * 11.615;
-					break;
+						break;
 
 					case "Business services":
 						price = TotalWaternumber * 22.068;
-					break;
-                }
-            }
+						break;
+				}
+			}
 
-			
-
-
-            ListViewItem item = new();
+			ListViewItem item = new();
 			item.Text = name;
 
 			item.SubItems.Add(type);
@@ -121,8 +114,12 @@
 			cbbType.Text = "";
 		}
 
+		private double CalculatePrice(int waternumber) {
+			// Thuật toán tính
+			return 0;
+		}
 
-        private void textBox3_KeyPress(object sender, KeyPressEventArgs e) {
+		private void textBox3_KeyPress(object sender, KeyPressEventArgs e) {
 			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
 				e.Handled = true;
 			}
