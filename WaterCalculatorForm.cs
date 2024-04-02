@@ -134,7 +134,7 @@ namespace ASM2_NVH {
             }
 
 
-
+            //Litsview Hiển Thị
             ListViewItem item = new();
             item.Text = name;
 
@@ -184,17 +184,9 @@ namespace ASM2_NVH {
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void txbThisMonth_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void lisview2(object sender, ItemCheckedEventArgs e)
-        {
-        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e){}
+        private void txbThisMonth_TextChanged(object sender, EventArgs e){}
+        private void lisview2(object sender, ItemCheckedEventArgs e){}
 
         private void btnFIx_Click(object sender, EventArgs e)
         {
