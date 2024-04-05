@@ -217,11 +217,10 @@
             listView1.TabIndex = 1;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
-            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
-            // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "Name";
+			// 
+			// columnHeader1
+			// 
+			columnHeader1.Text = "Name";
             columnHeader1.Width = 150;
             // 
             // columnHeader2
