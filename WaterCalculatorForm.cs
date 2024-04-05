@@ -1,7 +1,5 @@
 ﻿namespace ASM2_NVH {
-
 	public partial class WaterCalculatorForm : Form {
-
 		public WaterCalculatorForm() {
 			InitializeComponent();
 		}
@@ -104,9 +102,10 @@
 						break;
 				}
 			}
+            //TODO: Ông thêm Hộ tôi thuế VAT
 
-			ListViewItem item = new();
-			item.Text = name;
+            ListViewItem item = new();
+            item.Text = name;
 
 			item.SubItems.Add(type);
 			item.SubItems.Add(lastmonth);
@@ -157,6 +156,7 @@
 		}
 
 		private void btnFIx_Click(object sender, EventArgs e) {
+            //TODO: Ông thêm chức năng fix lại dữ liệu
 			if (listView1.SelectedItems.Count > 0) {
 				listView1.SelectedItems[0].SubItems[0].Text = txbName.Text;
 				listView1.SelectedItems[0].SubItems[1].Text = cbbType.Text;
