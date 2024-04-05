@@ -119,6 +119,14 @@ namespace ASM2_NVH {
                         price = TotalWaternumber * 11.615;
                         break;
 
+					case "Business services":
+						price = TotalWaternumber * 22.068;
+						break;
+				}
+			}
+
+			ListViewItem item = new();
+			item.Text = name;
                     case "Business":
                         price = TotalWaternumber * 22.068;
                         break;
@@ -147,6 +155,26 @@ namespace ASM2_NVH {
             cbbType.Text = "";
         }
 
+		private double CalculatePrice(double waternumber) {
+			if (0 < waternumber && waternumber <= 10) {
+			}
+			return 0;
+		}
+
+		private void textBox3_KeyPress(object sender, KeyPressEventArgs e) {
+			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
+				e.Handled = true;
+			}
+		}
+
+		private void textBox2_TextChanged(object sender, EventArgs e) {
+		}
+
+		private void textBox2_KeyPress(object sender, KeyPressEventArgs e) {
+			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
+				e.Handled = true;
+			}
+		}
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -171,6 +199,48 @@ namespace ASM2_NVH {
                 txbLastMonth.Text = listView1.SelectedItems[0].SubItems[2].Text;
                 txbThisMonth.Text = listView1.SelectedItems[0].SubItems[3].Text;
 
+		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
+		}
+
+		private void txbThisMonth_TextChanged(object sender, EventArgs e) {
+		}
+
+		private void lisview2(object sender, ItemCheckedEventArgs e) {
+		}
+
+		// Chưa có thuật toán tính cho Household à
+		private void btnFIx_Click(object sender, EventArgs e) {
+			if (listView1.SelectedItems.Count > 0) {
+				listView1.SelectedItems[0].SubItems[0].Text = txbName.Text;
+				listView1.SelectedItems[0].SubItems[1].Text = cbbType.Text;
+				if (!double.TryParse(txbLastMonth.Text, out double lastMonth) || !double.TryParse(txbThisMonth.Text, out double thisMonth))
+					return;
+				double TotalWaternumber = thisMonth - lastMonth;
+				listView1.SelectedItems[0].SubItems[2].Text = $"{TotalWaternumber}";
+				double price = 0;
+				switch (cbbType.Text) {
+					case "Household":
+						price = CalculatePrice(TotalWaternumber);
+						break;
+
+					case "Public service":
+						price = TotalWaternumber * 9.955;
+						break;
+
+					case "Production units":
+						price = TotalWaternumber * 11.615;
+						break;
+
+					case "Business services":
+						price = TotalWaternumber * 22.068;
+						break;
+				}
+				listView1.SelectedItems[0].SubItems[3].Text = $"{price:n2}";
+			} else {
+				MessageBox.Show("You must choose 1 line !!");
+			}
+		}
+	}
             }
         }
         private void btnFIx_Click(object sender, EventArgs e)
