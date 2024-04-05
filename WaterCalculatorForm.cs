@@ -1,5 +1,7 @@
 ﻿namespace ASM2_NVH {
+
 	public partial class WaterCalculatorForm : Form {
+
 		public WaterCalculatorForm() {
 			InitializeComponent();
 		}
@@ -97,21 +99,23 @@
 						price = TotalWaternumber * 11.615;
 						break;
 
-					case "Business services":
+					case "Business":
 						price = TotalWaternumber * 22.068;
 						break;
 				}
 			}
-            //TODO: Ông thêm Hộ tôi thuế VAT
 
-            ListViewItem item = new();
-            item.Text = name;
+			double VAT = price * 0.1;
+			double TotalPrice = price + VAT;
+
+			ListViewItem item = new();
+			item.Text = name;
 
 			item.SubItems.Add(type);
 			item.SubItems.Add(lastmonth);
 			item.SubItems.Add(thismonth);
 			item.SubItems.Add("" + TotalWaternumber);
-			item.SubItems.Add($"{price:n0}");
+			item.SubItems.Add($"{TotalPrice:n3}");
 
 			listView1.Items.Add(item);
 			cbbType.Text = type;
@@ -156,13 +160,19 @@
 		}
 
 		private void btnFIx_Click(object sender, EventArgs e) {
-            //TODO: Ông thêm chức năng fix lại dữ liệu
+			//TODO: Ông thêm chức năng fix lại dữ liệu
 			if (listView1.SelectedItems.Count > 0) {
 				listView1.SelectedItems[0].SubItems[0].Text = txbName.Text;
 				listView1.SelectedItems[0].SubItems[1].Text = cbbType.Text;
 				if (!int.TryParse(txbLastMonth.Text, out int lastMonth) || !int.TryParse(txbThisMonth.Text, out int thisMonth))
 					return;
-				int TotalWaternumber = thisMonth - lastMonth;
+				if (thisMonth < lastMonth) {
+					MessageBox.Show("This month's water number cannot be less than last month's. Please enter again.", "Notice",
+						MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					txbThisMonth.Text = "";
+					return;
+				}
+				double TotalWaternumber = thisMonth - lastMonth;
 				listView1.SelectedItems[0].SubItems[2].Text = txbLastMonth.Text;
 				listView1.SelectedItems[0].SubItems[3].Text = txbThisMonth.Text;
 				listView1.SelectedItems[0].SubItems[4].Text = "" + TotalWaternumber;
@@ -182,14 +192,24 @@
 						price = TotalWaternumber * 11.615;
 						break;
 
-					case "Business services":
+					case "Business":
 						price = TotalWaternumber * 22.068;
 						break;
 				}
-				listView1.SelectedItems[0].SubItems[5].Text = $"{price:n0}";
+				double VAT = price * 0.1;
+				double TotalPrice = price + VAT;
+				listView1.SelectedItems[0].SubItems[5].Text = $"{TotalPrice:n3}";
 			} else {
 				MessageBox.Show("You must choose 1 line !!");
 			}
+		}
+
+		private void IndexChanged(object sender, EventArgs e) {
+			if (listView1.SelectedItems.Count <= 0) return;
+			txbName.Text = listView1.SelectedItems[0].SubItems[0].Text;
+			cbbType.Text = listView1.SelectedItems[0].SubItems[1].Text;
+			txbLastMonth.Text = listView1.SelectedItems[0].SubItems[2].Text;
+			txbThisMonth.Text = listView1.SelectedItems[0].SubItems[3].Text;
 		}
 	}
 }
