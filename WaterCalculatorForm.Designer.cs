@@ -45,14 +45,18 @@
             listView1 = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
+            columnHeader6 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
+            label1 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(fullnameLabel);
             panel1.Controls.Add(waternumberLabel);
             panel1.Controls.Add(thisMonthLabel);
@@ -68,9 +72,8 @@
             panel1.Controls.Add(btnAdd);
             panel1.Location = new Point(11, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(776, 206);
+            panel1.Size = new Size(814, 206);
             panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
             // 
             // fullnameLabel
             // 
@@ -89,7 +92,7 @@
             waternumberLabel.Location = new Point(135, 109);
             waternumberLabel.Name = "waternumberLabel";
             waternumberLabel.Size = new Size(95, 17);
-            waternumberLabel.TabIndex = 2;
+            waternumberLabel.TabIndex = 9;
             waternumberLabel.Text = "Waternumber :";
             // 
             // thisMonthLabel
@@ -128,8 +131,7 @@
             txbThisMonth.Location = new Point(217, 156);
             txbThisMonth.Name = "txbThisMonth";
             txbThisMonth.Size = new Size(60, 26);
-            txbThisMonth.TabIndex = 12;
-            txbThisMonth.TextChanged += txbThisMonth_TextChanged;
+            txbThisMonth.TabIndex = 3;
             txbThisMonth.KeyPress += textBox3_KeyPress;
             // 
             // cbbType
@@ -140,8 +142,7 @@
             cbbType.Location = new Point(490, 24);
             cbbType.Name = "cbbType";
             cbbType.Size = new Size(248, 27);
-            cbbType.TabIndex = 10;
-            cbbType.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            cbbType.TabIndex = 4;
             // 
             // txbLastMonth
             // 
@@ -149,7 +150,7 @@
             txbLastMonth.Location = new Point(76, 156);
             txbLastMonth.Name = "txbLastMonth";
             txbLastMonth.Size = new Size(60, 26);
-            txbLastMonth.TabIndex = 9;
+            txbLastMonth.TabIndex = 2;
             txbLastMonth.KeyPress += textBox2_KeyPress;
             // 
             // txbName
@@ -158,7 +159,7 @@
             txbName.Location = new Point(123, 24);
             txbName.Name = "txbName";
             txbName.Size = new Size(248, 26);
-            txbName.TabIndex = 7;
+            txbName.TabIndex = 1;
             // 
             // btnExit
             // 
@@ -166,7 +167,7 @@
             btnExit.Location = new Point(663, 139);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(75, 30);
-            btnExit.TabIndex = 6;
+            btnExit.TabIndex = 8;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += button4_Click;
@@ -177,7 +178,7 @@
             btnDelete.Location = new Point(663, 81);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(75, 30);
-            btnDelete.TabIndex = 5;
+            btnDelete.TabIndex = 7;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += button3_Click;
@@ -188,8 +189,8 @@
             btnFIx.Location = new Point(494, 139);
             btnFIx.Name = "btnFIx";
             btnFIx.Size = new Size(75, 30);
-            btnFIx.TabIndex = 4;
-            btnFIx.Text = "Fix";
+            btnFIx.TabIndex = 6;
+            btnFIx.Text = "Edit";
             btnFIx.UseVisualStyleBackColor = true;
             btnFIx.Click += btnFIx_Click;
             // 
@@ -199,24 +200,23 @@
             btnAdd.Location = new Point(494, 81);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(75, 30);
-            btnAdd.TabIndex = 3;
+            btnAdd.TabIndex = 5;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += button1_Click;
             // 
             // listView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
+            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader5, columnHeader6, columnHeader3, columnHeader4 });
             listView1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listView1.FullRowSelect = true;
             listView1.GridLines = true;
             listView1.Location = new Point(12, 224);
             listView1.Name = "listView1";
-            listView1.Size = new Size(776, 175);
+            listView1.Size = new Size(813, 175);
             listView1.TabIndex = 1;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
-            listView1.ItemChecked += lisview2;
             listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
             // 
             // columnHeader1
@@ -228,7 +228,19 @@
             // 
             columnHeader2.Text = "Type Customer ";
             columnHeader2.TextAlign = HorizontalAlignment.Center;
-            columnHeader2.Width = 300;
+            columnHeader2.Width = 170;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Last Month";
+            columnHeader5.TextAlign = HorizontalAlignment.Center;
+            columnHeader5.Width = 100;
+            // 
+            // columnHeader6
+            // 
+            columnHeader6.Text = "This Moth";
+            columnHeader6.TextAlign = HorizontalAlignment.Center;
+            columnHeader6.Width = 100;
             // 
             // columnHeader3
             // 
@@ -242,11 +254,22 @@
             columnHeader4.TextAlign = HorizontalAlignment.Center;
             columnHeader4.Width = 130;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BorderStyle = BorderStyle.Fixed3D;
+            label1.Enabled = false;
+            label1.Location = new Point(748, 185);
+            label1.Name = "label1";
+            label1.Size = new Size(61, 17);
+            label1.TabIndex = 15;
+            label1.Text = "* 10% VAT";
+            // 
             // WaterCalculatorForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(837, 450);
             Controls.Add(listView1);
             Controls.Add(panel1);
             Name = "WaterCalculatorForm";
@@ -277,5 +300,8 @@
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
+        private ColumnHeader columnHeader6;
+        private Label label1;
     }
 }
