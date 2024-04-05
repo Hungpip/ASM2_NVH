@@ -119,13 +119,14 @@ namespace ASM2_NVH {
                         price = TotalWaternumber * 11.615;
                         break;
 
-                    case "Business":
-                        price = TotalWaternumber * 22.068;
-                        break;
-                }
-                price *= 1.1; //10% VAT
-            }
-//listviewwwwwwwwwww
+					case "Business services":
+						price = TotalWaternumber * 22.068;
+						break;
+				}
+			}
+
+
+
             ListViewItem item = new();
             item.Text = name;
 
@@ -148,52 +149,7 @@ namespace ASM2_NVH {
             cbbType.Text = "";
         }
 
-        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-//Thay đổi dữ liệu
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listView1.SelectedItems.Count > 0)
-            {
-                txbName.Text = listView1.SelectedItems[0].SubItems[0].Text;
-                cbbType.Text = listView1.SelectedItems[0].SubItems[1].Text;
-                txbLastMonth.Text = listView1.SelectedItems[0].SubItems[2].Text;
-                txbThisMonth.Text = listView1.SelectedItems[0].SubItems[3].Text;
-
-            }
-        }
-        private void btnFIx_Click(object sender, EventArgs e)
-        {
-            // TODO: Ông thêm hộ tôi cái tính năng mà edit nó sửa luôn giá ở út edit với
-            if (listView1.SelectedItems.Count > 0)
-            {
-                listView1.SelectedItems[0].SubItems[0].Text = txbName.Text;
-                listView1.SelectedItems[0].SubItems[1].Text = cbbType.Text;
-                listView1.SelectedItems[0].SubItems[2].Text = txbLastMonth.Text;
-                listView1.SelectedItems[0].SubItems[3].Text = txbThisMonth.Text;
-
-            }
-            else
-            {
-                MessageBox.Show("You must choose 1 line !!");
-            }
-        }
-    }
-		}
-
-		private double CalculatePrice(double waternumber) {
+		private double CalculatePrice(int waternumber) {
 			if (0 < waternumber && waternumber <= 10) {
 			}
 			return 0;
@@ -214,46 +170,25 @@ namespace ASM2_NVH {
 			}
 		}
 
-		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
-		}
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
 
-		private void txbThisMonth_TextChanged(object sender, EventArgs e) {
-		}
+        private void txbThisMonth_TextChanged(object sender, EventArgs e)
+        {
+        }
 
-		private void lisview2(object sender, ItemCheckedEventArgs e) {
-		}
+        private void lisview2(object sender, ItemCheckedEventArgs e)
+        {
+        }
 
-		// Chưa có thuật toán tính cho Household à
 		private void btnFIx_Click(object sender, EventArgs e) {
-    if (listView1.SelectedItems.Count > 0) {
-        listView1.SelectedItems[0].SubItems[0].Text = txbName.Text;
-        listView1.SelectedItems[0].SubItems[1].Text = cbbType.Text;
-        if (!double.TryParse(txbLastMonth.Text, out double lastMonth) || !double.TryParse(txbThisMonth.Text, out double thisMonth))
-            return;
-        double TotalWaternumber = thisMonth - lastMonth;
-        listView1.SelectedItems[0].SubItems[2].Text = $"{TotalWaternumber}";
-        double price = 0;
-        switch (cbbType.Text) {
-            case "Household":
-                price = CalculatePrice(TotalWaternumber);
-                break;
-
-            case "Public service":
-                price = TotalWaternumber * 9.955;
-                break;
-
-            case "Production units":
-                price = TotalWaternumber * 11.615;
-                break;
-
-            case "Business services":
-                price = TotalWaternumber * 22.068;
-                break;
-        }
-        listView1.SelectedItems[0].SubItems[3].Text = $"{price:n2}";
-
-            } else {MessageBox.Show("You must choose 1 line !!");
+			if (listView1.SelectedItems.Count > 0) {
+				listView1.SelectedItems[0].SubItems[0].Text = txbName.Text;
+				listView1.SelectedItems[0].SubItems[1].Text = cbbType.Text;
+			} else {
+				MessageBox.Show("You must choose 1 line !!");
 			}
-
-        }
+		}
+	}
 }
