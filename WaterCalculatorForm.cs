@@ -124,7 +124,7 @@ namespace ASM2_NVH {
 						break;
 				}
 			}
-
+            //TODO: Ông thêm Hộ tôi thuế VAT
 
 
             ListViewItem item = new();
@@ -182,6 +182,7 @@ namespace ASM2_NVH {
         }
 
 		private void btnFIx_Click(object sender, EventArgs e) {
+            //TODO: Ông thêm chức năng fix lại dữ liệu
 			if (listView1.SelectedItems.Count > 0) {
 				listView1.SelectedItems[0].SubItems[0].Text = txbName.Text;
 				listView1.SelectedItems[0].SubItems[1].Text = cbbType.Text;
