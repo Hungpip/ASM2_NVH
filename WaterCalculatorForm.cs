@@ -142,7 +142,6 @@ namespace ASM2_NVH {
             txbThisMonth.Text = thismonth;
             txbName.Focus();
 
-// HEAD
             txbName.Text = "";
             txbLastMonth.Text = "";
             txbThisMonth.Text = "";
