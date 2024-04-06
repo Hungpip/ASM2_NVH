@@ -93,7 +93,6 @@
 			passwordLabel.Size = new Size(69, 19);
 			passwordLabel.TabIndex = 5;
 			passwordLabel.Text = "Password";
-			passwordLabel.Click += Form1_Load;
 			// 
 			// Form1
 			// 
@@ -108,7 +107,6 @@
 			Controls.Add(btnExit);
 			Name = "Form1";
 			Text = "Form1";
-			Load += Form1_Load;
 			ResumeLayout(false);
 			PerformLayout();
 		}

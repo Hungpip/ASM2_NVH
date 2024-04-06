@@ -161,7 +161,7 @@
 			txbLastMonth.Name = "txbLastMonth";
 			txbLastMonth.Size = new Size(60, 26);
 			txbLastMonth.TabIndex = 2;
-			txbLastMonth.KeyPress += textBox2_KeyPress;
+				txbLastMonth.KeyPress += textBox2_KeyPress;
 			// 
 			// txbName
 			// 

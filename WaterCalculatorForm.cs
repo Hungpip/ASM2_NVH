@@ -5,35 +5,6 @@
 		public WaterCalculatorForm() {
 			InitializeComponent();
 		}
-
-		//Nút deleteeeeee
-		private void button3_Click(object sender, EventArgs e) {
-			DialogResult result = MessageBox.Show("Do you want to delete?", "",
-			MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-			if (result == DialogResult.OK) {
-				if (listView1.SelectedItems.Count > 0) {
-					listView1.Items.Remove(listView1.SelectedItems[0]);
-
-					txbName.Text = "";
-					txbLastMonth.Text = "";
-					txbThisMonth.Text = "";
-					cbbType.Text = "";
-				} else {
-					MessageBox.Show("Must choose a litter one line");
-				}
-			}
-		}
-
-		//Nút exitttttt
-		private void button4_Click(object sender, EventArgs e) {
-			DialogResult result = MessageBox.Show("Do you want to exit?", "",
-				MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-			if (result == DialogResult.OK) {
-				Application.Exit();
-			}
-		}
-
 		//Nhập tên Khách hàng
 		private void button1_Click(object sender, EventArgs e) {
 			string name = txbName.Text;
@@ -58,8 +29,9 @@
 				return;
 			}
 
-			if (int.Parse(thismonth) < int.Parse(lastmonth)) {
-				MessageBox.Show("This month's water number cannot be less than last month's. Please enter again.", "Notice",
+			if (int.Parse(thismonth) < int.Parse(lastmonth)) { 
+				MessageBox.Show("This month's water number cannot be less than last month's." +
+								" Please enter again.", "Notice",
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				txbThisMonth.Text = "";
 				return;
@@ -90,7 +62,7 @@
 						int index = Math.Min(3, (int) Math.Floor(TotalWaternumber / 10.0));
 						price = TotalWaternumber * priceStep[index];
 						break;
-
+						
 					case "Public services":
 						price = TotalWaternumber * 9.955;
 						break;
@@ -129,45 +101,26 @@
 			cbbType.Text = "";
 		}
 
-		private double CalculatePrice(int waternumber) {
-			if (0 < waternumber && waternumber <= 10) {
-			}
-			return 0;
-		}
-
 		private void textBox3_KeyPress(object sender, KeyPressEventArgs e) {
 			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
 				e.Handled = true;
 			}
 		}
-
-		private void textBox2_TextChanged(object sender, EventArgs e) {
-		}
-
 		private void textBox2_KeyPress(object sender, KeyPressEventArgs e) {
 			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
 				e.Handled = true;
 			}
 		}
-
-		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
-		}
-
-		private void txbThisMonth_TextChanged(object sender, EventArgs e) {
-		}
-
-		private void lisview2(object sender, ItemCheckedEventArgs e) {
-		}
-
 		private void btnFIx_Click(object sender, EventArgs e) {
-			//TODO: Ông thêm chức năng fix lại dữ liệu
 			if (listView1.SelectedItems.Count > 0) {
 				listView1.SelectedItems[0].SubItems[0].Text = txbName.Text;
 				listView1.SelectedItems[0].SubItems[1].Text = cbbType.Text;
-				if (!int.TryParse(txbLastMonth.Text, out int lastMonth) || !int.TryParse(txbThisMonth.Text, out int thisMonth))
+				if (!int.TryParse(txbLastMonth.Text, out int lastMonth) || 
+					!int.TryParse(txbThisMonth.Text, out int thisMonth))
 					return;
 				if (thisMonth < lastMonth) {
-					MessageBox.Show("This month's water number cannot be less than last month's. Please enter again.", "Notice",
+					MessageBox.Show("This month's water number cannot be less than last month's." +
+									" Please enter again.", "Notice",
 						MessageBoxButtons.OK, MessageBoxIcon.Warning);
 					txbThisMonth.Text = "";
 					return;
@@ -199,9 +152,9 @@
 				double VAT = price * 0.1;
 				double TotalPrice = price + VAT;
 				listView1.SelectedItems[0].SubItems[5].Text = $"{TotalPrice:n3}";
-			} else {
+			}	else {
 				MessageBox.Show("You must choose 1 line !!");
-			}
+			}	
 		}
 
 		private void IndexChanged(object sender, EventArgs e) {
@@ -211,5 +164,43 @@
 			txbLastMonth.Text = listView1.SelectedItems[0].SubItems[2].Text;
 			txbThisMonth.Text = listView1.SelectedItems[0].SubItems[3].Text;
 		}
-	}
+        //Nút deleteeeeee
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to delete?", "",
+            MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.OK)
+            {
+                if (listView1.SelectedItems.Count > 0)
+                {
+                    listView1.Items.Remove(listView1.SelectedItems[0]);
+
+                    txbName.Text = "";
+                    txbLastMonth.Text = "";
+                    txbThisMonth.Text = "";
+					cbbType.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Must choose a litter one line");
+                }
+            }
+        }
+        //Nút exitttttt
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to exit?", "",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                Application.Exit();
+            }
+        }
+				private double CalculatePrice(int waternumber) {
+			if (0 < waternumber && waternumber <= 10) {
+			}
+			return 0;
+		}
+    }
 }
